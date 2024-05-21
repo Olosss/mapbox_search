@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mapbox_search/mapbox_search.dart';
 import 'package:mapbox_search/models/location.dart';
+import 'package:mapbox_search/models/map_box_address_place.dart';
 
 /// The MapBox Geocoding API lets you convert location text into geographic coordinates (1600 Pennsylvania Ave NW → -77.0366,38.8971)
 /// and vice versa (reverse geocoding).
@@ -109,7 +110,7 @@ class GeoCoding {
   }
 
   /// Get the address of the given location coordinates
-  Future<ApiResponse<List<MapBoxPlace>?>> getAddress(Location location) async {
+  Future<ApiResponse<List<MapBoxAddressPlace>?>> getAddress(Location location) async {
     // Assert that if limit is not null then only one type is passed
     assert(limit != null && (types.length == 1) || limit == null,
         'Limit is not null so you can only pass one type');
@@ -124,7 +125,7 @@ class GeoCoding {
     }
 
     return (
-      success: Predictions.fromJson(json.decode(response.body)).features,
+      success: AddressPrediction.fromJson(json.decode(response.body)).features,
       failure: null
     );
   }

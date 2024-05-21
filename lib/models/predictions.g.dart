@@ -22,6 +22,24 @@ Map<String, dynamic> _$PredictionsToJson(Predictions instance) =>
       'features': instance.features,
     };
 
+AddressPrediction _$AddressPredictionFromJson(Map<String, dynamic> json) =>
+    AddressPrediction(
+      type: json['type'] as String?,
+      query: json['query'] as List<dynamic>?,
+      features: (json['features'] as List<dynamic>?)
+              ?.map(
+                  (e) => MapBoxAddressPlace.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$AddressPredictionToJson(AddressPrediction instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'query': instance.query,
+      'features': instance.features,
+    };
+
 MapBoxPlace _$MapBoxPlaceFromJson(Map<String, dynamic> json) => MapBoxPlace(
       id: json['id'] as String?,
       type: $enumDecodeNullable(_$FeatureTypeEnumMap, json['type']),

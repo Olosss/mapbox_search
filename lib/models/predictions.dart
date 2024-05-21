@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mapbox_search/mapbox_search.dart';
+import 'package:mapbox_search/models/map_box_address_place.dart';
 
 part 'predictions.g.dart';
 
@@ -25,6 +26,30 @@ class Predictions {
       _$PredictionsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PredictionsToJson(this);
+}
+
+@JsonSerializable()
+class AddressPrediction {
+  final String? type;
+  final List<dynamic>? query;
+  final List<MapBoxAddressPlace> features;
+
+  AddressPrediction({
+    this.type,
+    this.query,
+    this.features = const [],
+  });
+
+  factory AddressPrediction.empty() => AddressPrediction(
+    type: '',
+    query: [],
+    features: [],
+  );
+
+  factory AddressPrediction.fromJson(Map<String, dynamic> json) =>
+      _$AddressPredictionFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddressPredictionToJson(this);
 }
 
 @JsonSerializable()
