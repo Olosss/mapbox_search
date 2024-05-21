@@ -12,6 +12,7 @@ class Context {
     required this.place,
     this.neighborhood,
     this.street,
+    this.address
   });
 
   final Country? country;
@@ -21,6 +22,7 @@ class Context {
   final Place? place;
   final Neighborhood? neighborhood;
   final Neighborhood? street;
+  final Address? address;
 
   factory Context.fromJson(Map<String, dynamic> json) =>
       _$ContextFromJson(json);
@@ -95,4 +97,19 @@ class Place {
   factory Place.fromJson(Map<String, dynamic> json) => _$PlaceFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlaceToJson(this);
+}
+
+@JsonSerializable()
+class Address {
+  Address({
+    this.id,
+    required this.name,
+  });
+
+  final String? id;
+  final String name;
+
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

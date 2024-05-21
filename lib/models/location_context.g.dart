@@ -28,6 +28,9 @@ Context _$ContextFromJson(Map<String, dynamic> json) => Context(
       street: json['street'] == null
           ? null
           : Neighborhood.fromJson(json['street'] as Map<String, dynamic>),
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ContextToJson(Context instance) => <String, dynamic>{
@@ -38,6 +41,7 @@ Map<String, dynamic> _$ContextToJson(Context instance) => <String, dynamic>{
       'place': instance.place,
       'neighborhood': instance.neighborhood,
       'street': instance.street,
+      'address': instance.address,
     };
 
 Country _$CountryFromJson(Map<String, dynamic> json) => Country(
@@ -83,6 +87,16 @@ Place _$PlaceFromJson(Map<String, dynamic> json) => Place(
     );
 
 Map<String, dynamic> _$PlaceToJson(Place instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+Address _$AddressFromJson(Map<String, dynamic> json) => Address(
+      id: json['id'] as String?,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
     };
