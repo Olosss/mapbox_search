@@ -16,6 +16,7 @@ MapBoxAddressPlace _$MapBoxAddressPlaceFromJson(Map<String, dynamic> json) =>
       context: (json['context'] as List<dynamic>?)
           ?.map((e) => AddressContext.fromJson(e as Map<String, dynamic>))
           .toList(),
+      address: json['address'] as String?,
     );
 
 Map<String, dynamic> _$MapBoxAddressPlaceToJson(MapBoxAddressPlace instance) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$MapBoxAddressPlaceToJson(MapBoxAddressPlace instance) =>
       'place_name': instance.place_name,
       'center': const OptionalLocationConverter().toJson(instance.center),
       'context': instance.context,
+      'address': instance.address,
     };
 
 AddressContext _$AddressContextFromJson(Map<String, dynamic> json) =>

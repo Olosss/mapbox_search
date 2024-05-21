@@ -13,6 +13,7 @@ class MapBoxAddressPlace {
   @OptionalLocationConverter()
   final Location? center;
   final List<AddressContext>? context;
+  final String? address;
 
   MapBoxAddressPlace({
     this.id,
@@ -20,6 +21,7 @@ class MapBoxAddressPlace {
     this.place_name,
     this.center,
     this.context,
+    this.address,
   });
 
   factory MapBoxAddressPlace.fromJson(Map<String, dynamic> json) =>
